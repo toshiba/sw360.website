@@ -36,6 +36,7 @@ spec:
       steps {
         sh '''
             if ! grep -q "^git.eclipse.org" ~/.ssh/known_hosts; then
+              mkdir -p ~/.ssh
               ssh-keyscan -t rsa git.eclipse.org >> ~/.ssh/known_hosts
             fi
           '''
