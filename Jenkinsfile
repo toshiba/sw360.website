@@ -1,3 +1,5 @@
+// See documentation on: https://wiki.eclipse.org/Jenkins#Build_my_project.27s_website_with_Jenkins.3F
+
 pipeline {
 
     agent {
@@ -31,7 +33,7 @@ spec:
     }
 
     stages {
-        stage("Checkout www repo on branch $env.BRANCH_NAME") {
+        stage('Checkout www repo') {
             steps {
                 sh '''
 if ! grep -q "^git.eclipse.org" ~/.ssh/known_hosts; then
@@ -55,7 +57,7 @@ fi
                 }
             }
         }
-        stage("Push to $env.BRANCH_NAME branch") {
+        stage('Push wwww') {
             steps {
                 sh 'cp -Rvf hugo/public/* www/'
                 dir('www') {
