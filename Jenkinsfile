@@ -23,7 +23,6 @@ spec:
   environment {
     PROJECT_NAME = "sw360" // must be all lowercase.
     PROJECT_BOT_NAME = "SW360 Bot" // Capitalize the name
-    GIT_SSH_COMMAND="ssh -v -o StrictHostKeyChecking=no"
   }
 
  options {
@@ -41,11 +40,9 @@ spec:
             fi
           '''
         dir('www') {
-          sshagent(['b0848941-4b29-491c-9886-f5a0009202b9']) {
-            git branch: '$env.BRANCH_NAME',
+          git branch: '$env.BRANCH_NAME',
             url: 'ssh://genie.sw360@git.eclipse.org/gitroot/www.eclipse.org/sw360.git',
-            credentialsId: 'git.eclipse.org-bot-ssh'
-          }
+            credentialsId: 'b0848941-4b29-491c-9886-f5a0009202b9'
         }
       }
     }
