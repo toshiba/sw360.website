@@ -34,6 +34,11 @@ spec:
   stages {
     stage('Checkout www repo') {
       steps {
+        sh '''
+            if ! grep -q "^git.eclipse.org" ~/.ssh/known_hosts; then
+              ssh-keyscan -t rsa git.eclipse.org >> ~/.ssh/known_hosts
+            fi
+          '''
         dir('www') {
           sshagent(['b0848941-4b29-491c-9886-f5a0009202b9']) {
             git branch: '$env.BRANCH_NAME',
