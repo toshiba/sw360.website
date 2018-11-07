@@ -62,7 +62,7 @@ fi
                 sh 'cp -Rvf hugo/public/* www/'
                 dir('www') {
                     sshagent(['b0848941-4b29-491c-9886-f5a0009202b9']) {
-                        sh '''
+                        sh """
 git add -A
 if ! git diff --cached --exit-code; then
   echo "Changes have been detected, publishing to repo 'www.eclipse.org/sw360'"
@@ -74,7 +74,7 @@ if ! git diff --cached --exit-code; then
 else
   echo "No change have been detected since last build, nothing to publish"
 fi
-'''
+"""
                     }
                 }
             }
