@@ -37,13 +37,13 @@ spec:
         sh '''
             if ! grep -q "^git.eclipse.org" ~/.ssh/known_hosts; then
               mkdir -p ~/.ssh
-              ssh-keyscan -t rsa git.eclipse.org:29418 >> ~/.ssh/known_hosts
+              ssh-keyscan -t rsa git.eclipse.org >> ~/.ssh/known_hosts
             fi
           '''
         dir('www') {
           sshagent(['b0848941-4b29-491c-9886-f5a0009202b9']) {
             git branch: '$env.BRANCH_NAME',
-            url: 'ssh://genie.sw360@git.eclipse.org:29418/www.eclipse.org/sw360.git',
+            url: 'ssh://genie.sw360@git.eclipse.org/gitroot/www.eclipse.org/sw360.git',
             credentialsId: 'git.eclipse.org-bot-ssh'
           }
         }
